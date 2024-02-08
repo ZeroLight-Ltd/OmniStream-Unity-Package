@@ -1,0 +1,84 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 1; height: 75%; flex-direction: column;">
+        <ui:Label tabindex="-1" text="ZeroLight OmniStream" display-tooltip-when-elided="true" name="zl-header" style="font-size: 20px; -unity-font-style: bold; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 4px;" />
+        <ui:VisualElement name="gameviewsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: flex-start; flex-direction: row; justify-content: space-around; align-self: stretch; flex-shrink: initial;">
+            <ui:Button text="Load" display-tooltip-when-elided="true" name="gameviewload-button" style="align-items: stretch; width: 50%;" />
+            <ui:Button text="Save" display-tooltip-when-elided="true" name="gameviewsave-button" style="align-self: auto; width: 50%; align-items: stretch;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="globalsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: column; justify-content: space-between; align-self: auto;">
+            <ui:Foldout text="General" name="general-foldout" value="true" style="-unity-font-style: bold; flex-direction: column; justify-content: space-around; align-items: stretch; flex-shrink: 1; flex-basis: auto;">
+                <ui:TextField label="Allowed Keys" name="filteredkeys-text" tooltip="Only the keys in this list will be passed by OmniStream to Unity. To add kays, press the rcord button and hit the key on the keyboard." style="position: relative; flex-basis: auto; align-items: stretch; width: auto; overflow: visible; padding-left: 0; -unity-font-style: normal;">
+                    <ui:Button text="Record" display-tooltip-when-elided="true" name="recordkeys-button" />
+                </ui:TextField>
+                <ui:VisualElement name="filteredkeyspresets" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                    <ui:Button text="Add Default" display-tooltip-when-elided="true" name="AddDefault-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add Control" display-tooltip-when-elided="true" name="AddControl-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add Shift" display-tooltip-when-elided="true" name="AddShift-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add All Letters" display-tooltip-when-elided="true" name="AddAllLetters-button" style="max-width: 150px; -unity-font-style: normal;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="filteredkeyspresets" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
+                    <ui:Button text="Add All Numbers" display-tooltip-when-elided="true" name="AddAllNumbers-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add WSAD" display-tooltip-when-elided="true" name="AddWSAD-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add Arrows" display-tooltip-when-elided="true" name="AddArrow-button" style="max-width: 150px; -unity-font-style: normal;" />
+                </ui:VisualElement>
+                <ui:DropdownField label="Input mode" index="0" choices="Unity Input System, Unity Legacy Input" name="inputmode-dropdown" />
+            </ui:Foldout>
+            <ui:Foldout text="Performance" name="performance-foldout" value="true" style="-unity-font-style: bold;">
+                <ui:SliderInt picking-mode="Ignore" label="FPS" value="30" high-value="60" name="fps-field" low-value="30">
+                    <ui:TextField picking-mode="Ignore" value="0" name="fpstext-field" style="width: 9%;" />
+                </ui:SliderInt>
+            </ui:Foldout>
+            <ui:Foldout text="Cloud" name="cloud-foldout" value="true" style="-unity-font-style: bold;">
+                <ui:Toggle label="Restart on Disconnect" name="restartOnDisconnect-field" style="-unity-font-style: normal;" />
+            </ui:Foldout>
+            <ui:Foldout text="Standalone Assets" name="standaloneassets-foldout" style="flex-direction: column; -unity-font-style: bold;">
+                <ui:TextField picking-mode="Ignore" label="Standalone Folder" name="assetproject-text" style="-unity-font-style: normal; flex-direction: row;">
+                    <ui:Button text="Select" display-tooltip-when-elided="true" name="assetfolderselect-button" />
+                </ui:TextField>
+                <ui:TextField picking-mode="Ignore" label="Standalone Binary" name="assetexe-text" style="-unity-font-style: normal;">
+                    <ui:Button text="Select" display-tooltip-when-elided="true" name="assetexeselect-button" />
+                </ui:TextField>
+            </ui:Foldout>
+            <ui:Foldout text="Licensing" name="licensing-foldout" value="false" style="-unity-font-style: bold;">
+                <ui:TextField picking-mode="Ignore" label="License" name="licensing-text" style="-unity-font-style: normal;" />
+            </ui:Foldout>
+        </ui:VisualElement>
+        <ui:VisualElement name="buildsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto;">
+            <ui:Foldout text="Build and Deploy" name="buildanddeploy-foldout" value="true" style="-unity-font-style: bold;">
+                <ui:TextField picking-mode="Ignore" label="Project Name" name="projectname-text" readonly="true" value="OmniStream" style="-unity-font-style: normal; display: none;" />
+                <ui:TextField picking-mode="Ignore" label="Name" name="deployname-text" style="-unity-font-style: normal;" />
+                <ui:TextField picking-mode="Ignore" label="Build ID" name="buildid-text" style="-unity-font-style: normal; margin-bottom: 3px;" />
+                <ui:TextField picking-mode="Ignore" label="Build Folder" name="buildfolder-text" readonly="true" style="-unity-font-style: normal; display: none;" />
+                <ui:Button text="Change Asset Line" parse-escape-sequences="false" display-tooltip-when-elided="true" name="selectassetline-button" enable-rich-text="true" style="display: flex; justify-content: flex-start; padding-top: 1px; padding-right: 0; padding-bottom: 1px; padding-left: 0; align-items: stretch; align-self: stretch; overflow: hidden; -unity-font-style: normal;" />
+            </ui:Foldout>
+        </ui:VisualElement>
+        <ui:VisualElement name="devfeatures-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; flex-direction: column; visibility: visible; overflow: visible; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; display: flex; padding-top: 0; margin-top: 0;">
+            <ui:Foldout text="Dev Features" name="devfeatures-foldout" value="true" style="-unity-font-style: bold;">
+                <ui:DropdownField label="Storage Provider" index="0" choices="bard-zip,bard,blackhole" name="storageprovider-dropdown" />
+            </ui:Foldout>
+        </ui:VisualElement>
+        <ui:VisualElement name="footer-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; justify-content: flex-end; margin-top: 5px; padding-top: 10px;">
+            <ui:Label tabindex="-1" text="BARD Auth" display-tooltip-when-elided="true" name="authstate-label" enable-rich-text="true" style="padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; align-self: auto; justify-content: flex-start; -unity-text-align: upper-left; white-space: nowrap; text-overflow: clip;" />
+            <ui:TextField picking-mode="Ignore" label="Deploy ref" readonly="true" name="deployref-field" tooltip="The OmniStream build ID for your completed build. Provide this to ZeroLight to have your build deployed." />
+            <ui:Button text="Build And Deploy" display-tooltip-when-elided="true" name="build-button" />
+            <ui:Button text="Authenticate" display-tooltip-when-elided="true" name="authenticate-button" style="display: flex;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="about-root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: auto;">
+        <ui:VisualElement name="about-element" style="flex-grow: 1; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: 25%;">
+            <ui:VisualElement name="top-about" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-and-crop; height: 50%; display: flex; opacity: 1; align-items: auto; flex-direction: column; justify-content: center; align-self: stretch; margin-top: 0; margin-bottom: 0;">
+                <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="height: 50%; opacity: 1; flex-shrink: 1; background-image: url(&apos;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&apos;); align-items: center; flex-grow: 1; justify-content: flex-start; align-self: center; width: 50%; -unity-background-scale-mode: scale-to-fit; border-bottom-width: 0; transform-origin: top; scale: 2 2; margin-bottom: 0;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="middle-about" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: 0; min-height: 0; height: 25%;">
+                <ui:Label tabindex="-1" text="OmniStream is provided by ZeroLight Ltd&#10;ZLCloudStream Plugin Version: 1.0.3&#10;CloudStream2.dll: 2.0.0.113&#10;Build Date: Sep 14 2023" display-tooltip-when-elided="true" name="about-text" style="height: 134px; justify-content: flex-end; color: rgb(255, 255, 255); -unity-text-align: middle-left; margin-left: 20px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="bot-about" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 25%;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: flex-end; align-self: center; height: 11px; width: 462px;">
+                    <ui:Button text="Copy to Clipboard" display-tooltip-when-elided="true" name="copyabout-button" style="width: 139px; flex-direction: row; -unity-text-align: middle-center;" />
+                    <ui:Button text="Support" display-tooltip-when-elided="true" name="support-button" style="width: 144px; flex-direction: row; -unity-text-align: middle-center;" />
+                    <ui:Button text="License" display-tooltip-when-elided="true" name="license-button" style="width: 145px; flex-direction: row; -unity-text-align: middle-center;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
