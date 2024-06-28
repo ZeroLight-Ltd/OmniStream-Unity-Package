@@ -1,9 +1,9 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="root" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 1; height: 75%; flex-direction: column;">
+    <ui:VisualElement name="root" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: 100%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 1; height: 78%; flex-direction: column;">
         <ui:Label tabindex="-1" text="ZeroLight OmniStream" display-tooltip-when-elided="true" name="zl-header" style="font-size: 20px; -unity-font-style: bold; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 4px;" />
         <ui:VisualElement name="gameviewsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: flex-start; flex-direction: row; justify-content: space-around; align-self: stretch; flex-shrink: initial;">
-            <ui:Button text="Load" display-tooltip-when-elided="true" name="gameviewload-button" style="align-items: stretch; width: 50%;" />
-            <ui:Button text="Save" display-tooltip-when-elided="true" name="gameviewsave-button" style="align-self: auto; width: 50%; align-items: stretch;" />
+            <ui:Button text="Load" display-tooltip-when-elided="true" name="gameviewload-button" style="align-items: stretch; width: 50%; padding-bottom: 8px; padding-top: 8px;" />
+            <ui:Button text="Save" display-tooltip-when-elided="true" name="gameviewsave-button" style="align-self: auto; width: 50%; align-items: stretch; padding-bottom: 8px; padding-top: 8px;" />
         </ui:VisualElement>
         <ui:VisualElement name="globalsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: column; justify-content: space-between; align-self: auto;">
             <ui:Foldout text="General" name="general-foldout" value="true" style="-unity-font-style: bold; flex-direction: column; justify-content: space-around; align-items: stretch; flex-shrink: 1; flex-basis: auto;">
@@ -12,24 +12,30 @@
                 </ui:TextField>
                 <ui:VisualElement name="filteredkeyspresets" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                     <ui:Button text="Add Default" display-tooltip-when-elided="true" name="AddDefault-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add WSAD" display-tooltip-when-elided="true" name="AddWSAD-button" style="max-width: 150px; -unity-font-style: normal;" />
+                    <ui:Button text="Add Arrows" display-tooltip-when-elided="true" name="AddArrow-button" style="max-width: 150px; -unity-font-style: normal;" />
                     <ui:Button text="Add Control" display-tooltip-when-elided="true" name="AddControl-button" style="max-width: 150px; -unity-font-style: normal;" />
                     <ui:Button text="Add Shift" display-tooltip-when-elided="true" name="AddShift-button" style="max-width: 150px; -unity-font-style: normal;" />
                     <ui:Button text="Add All Letters" display-tooltip-when-elided="true" name="AddAllLetters-button" style="max-width: 150px; -unity-font-style: normal;" />
-                </ui:VisualElement>
-                <ui:VisualElement name="filteredkeyspresets" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row;">
                     <ui:Button text="Add All Numbers" display-tooltip-when-elided="true" name="AddAllNumbers-button" style="max-width: 150px; -unity-font-style: normal;" />
-                    <ui:Button text="Add WSAD" display-tooltip-when-elided="true" name="AddWSAD-button" style="max-width: 150px; -unity-font-style: normal;" />
-                    <ui:Button text="Add Arrows" display-tooltip-when-elided="true" name="AddArrow-button" style="max-width: 150px; -unity-font-style: normal;" />
                 </ui:VisualElement>
                 <ui:DropdownField label="Input mode" index="0" choices="Unity Input System, Unity Legacy Input" name="inputmode-dropdown" />
+                <ui:Toggle label="Supports VR" name="vr-toggle" />
             </ui:Foldout>
-            <ui:Foldout text="Performance" name="performance-foldout" value="true" style="-unity-font-style: bold;">
+            <ui:Foldout text="Performance" name="performance-foldout" value="false" style="-unity-font-style: bold;">
                 <ui:SliderInt picking-mode="Ignore" label="FPS" value="30" high-value="60" name="fps-field" low-value="30">
                     <ui:TextField picking-mode="Ignore" value="0" name="fpstext-field" style="width: 9%;" />
                 </ui:SliderInt>
             </ui:Foldout>
             <ui:Foldout text="Cloud" name="cloud-foldout" value="true" style="-unity-font-style: bold;">
-                <ui:Toggle label="Restart on Disconnect" name="restartOnDisconnect-field" style="-unity-font-style: normal;" />
+                <ui:Foldout text="Advanced - Connections" name="connect-disconnect-foldout" value="false">
+                    <ui:Toggle label="Restart on Disconnect" name="restartOnDisconnect-field" style="-unity-font-style: normal;" />
+                    <ui:Toggle label="Delay App Ready To Stream" name="delayAppReadyToStream-field" tooltip="Delay app allowing stream adoption until after the &apos;Set App Ready to Stream&apos; function is called. MUST be called to allow adoption if this is ticked." style="-unity-font-style: normal;" />
+                </ui:Foldout>
+                <ui:Foldout text="Advanced - State" name="state-foldout" value="false">
+                    <ui:FloatField label="State Warning Time" value="10" name="stateRequestWarningTime-field" style="-unity-font-style: normal; white-space: normal;" />
+                    <ui:FloatField label="State Timeout" value="30" name="stateRequestTimeout-field" style="-unity-font-style: normal; white-space: normal;" />
+                </ui:Foldout>
             </ui:Foldout>
             <ui:Foldout text="Standalone Assets" name="standaloneassets-foldout" style="flex-direction: column; -unity-font-style: bold;">
                 <ui:TextField picking-mode="Ignore" label="Standalone Folder" name="assetproject-text" style="-unity-font-style: normal; flex-direction: row;">
@@ -44,12 +50,16 @@
             </ui:Foldout>
         </ui:VisualElement>
         <ui:VisualElement name="buildsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto;">
-            <ui:Foldout text="Build and Deploy" name="buildanddeploy-foldout" value="true" style="-unity-font-style: bold;">
+            <ui:Foldout text="Build and Deploy" name="buildanddeploy-foldout" value="true" style="-unity-font-style: bold; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0); opacity: 1; background-color: rgba(0, 0, 0, 0);">
                 <ui:TextField picking-mode="Ignore" label="Project Name" name="projectname-text" readonly="true" value="OmniStream" style="-unity-font-style: normal; display: none;" />
                 <ui:TextField picking-mode="Ignore" label="Name" name="deployname-text" style="-unity-font-style: normal;" />
                 <ui:TextField picking-mode="Ignore" label="Build ID" name="buildid-text" style="-unity-font-style: normal; margin-bottom: 3px;" />
                 <ui:TextField picking-mode="Ignore" label="Build Folder" name="buildfolder-text" readonly="true" style="-unity-font-style: normal; display: none;" />
                 <ui:Button text="Change Asset Line" parse-escape-sequences="false" display-tooltip-when-elided="true" name="selectassetline-button" enable-rich-text="true" style="display: flex; justify-content: flex-start; padding-top: 1px; padding-right: 0; padding-bottom: 1px; padding-left: 0; align-items: stretch; align-self: stretch; overflow: hidden; -unity-font-style: normal;" />
+                <ui:Foldout text="Portal User Details" name="portaluserdetails-foldout" value="false">
+                    <ui:Label tabindex="-1" text="Username: Not Logged In" display-tooltip-when-elided="true" name="username-label" style="margin-left: -12px;" />
+                    <ui:Button text="Log In" display-tooltip-when-elided="true" name="portallogout-button" style="padding-left: 0; margin-left: -12px; padding-top: 1px; padding-bottom: 1px; -unity-font-style: normal;" />
+                </ui:Foldout>
             </ui:Foldout>
         </ui:VisualElement>
         <ui:VisualElement name="devfeatures-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; flex-direction: column; visibility: visible; overflow: visible; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; display: flex; padding-top: 0; margin-top: 0;">
@@ -65,18 +75,18 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="about-root" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: auto;">
-        <ui:VisualElement name="about-element" style="flex-grow: 1; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: 25%;">
+        <ui:VisualElement name="about-element" style="flex-grow: 1; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: 25%; font-size: 40%;">
             <ui:VisualElement name="top-about" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-and-crop; height: 50%; display: flex; opacity: 1; align-items: auto; flex-direction: column; justify-content: center; align-self: stretch; margin-top: 0; margin-bottom: 0;">
                 <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="height: 50%; opacity: 1; flex-shrink: 1; background-image: url(&apos;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&apos;); align-items: center; flex-grow: 1; justify-content: flex-start; align-self: center; width: 50%; -unity-background-scale-mode: scale-to-fit; border-bottom-width: 0; transform-origin: top; scale: 2 2; margin-bottom: 0;" />
             </ui:VisualElement>
-            <ui:VisualElement name="middle-about" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); min-width: 0; min-height: 0; height: 25%;">
-                <ui:Label tabindex="-1" text="OmniStream is provided by ZeroLight Ltd&#10;ZLCloudStream Plugin Version: 1.0.3&#10;CloudStream2.dll: 2.0.0.113&#10;Build Date: Sep 14 2023" display-tooltip-when-elided="true" name="about-text" style="height: 134px; justify-content: flex-end; color: rgb(255, 255, 255); -unity-text-align: middle-left; margin-left: 20px;" />
+            <ui:VisualElement name="middle-about" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); min-width: 0; min-height: 0; height: 25%; font-size: 17.5%; scale: 1 1;">
+                <ui:Label tabindex="-1" text="OmniStream is provided by ZeroLight Ltd&#10;ZLCloudStream Plugin Version: 1.0.3&#10;CloudStream2.dll: 2.0.0.113&#10;Build Date: Sep 14 2023" display-tooltip-when-elided="true" name="about-text" style="height: 80%; justify-content: flex-end; color: rgb(255, 255, 255); -unity-text-align: middle-left; margin-left: 20px; font-size: 14%; flex-grow: initial; flex-basis: auto; scale: 1 1;" />
             </ui:VisualElement>
-            <ui:VisualElement name="bot-about" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); height: 25%;">
-                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: flex-end; align-self: center; height: 11px; width: 462px;">
-                    <ui:Button text="Copy to Clipboard" display-tooltip-when-elided="true" name="copyabout-button" style="width: 139px; flex-direction: row; -unity-text-align: middle-center;" />
-                    <ui:Button text="Support" display-tooltip-when-elided="true" name="support-button" style="width: 144px; flex-direction: row; -unity-text-align: middle-center;" />
-                    <ui:Button text="License" display-tooltip-when-elided="true" name="license-button" style="width: 145px; flex-direction: row; -unity-text-align: middle-center;" />
+            <ui:VisualElement name="bot-about" style="flex-grow: initial; background-color: rgba(0, 0, 0, 0); height: 25%;">
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: flex-end; align-self: center; height: 80%; width: 60%;">
+                    <ui:Button text="Copy to Clipboard" display-tooltip-when-elided="true" name="copyabout-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
+                    <ui:Button text="Support" display-tooltip-when-elided="true" name="support-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
+                    <ui:Button text="License" display-tooltip-when-elided="true" name="license-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
