@@ -1,14 +1,24 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="top" style="flex-grow: 0; background-color: rgb(202, 202, 202); width: 100%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 0; height: 78%; flex-direction: column;">
-        <ui:ScrollView name="root-scroll">
+    <ui:VisualElement name="top" style="flex-grow: 0; background-color: rgb(202, 202, 202); width: 100%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 0; height: 78%; flex-direction: column; min-width: auto; min-height: 350px;">
+        <ui:ScrollView name="root-scroll" horizontal-scroller-visibility="Hidden">
             <ui:VisualElement name="root" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); width: auto; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; padding-left: 6px; padding-right: 6px; padding-top: 0; padding-bottom: 0; flex-shrink: 0; height: auto; flex-direction: column;">
                 <ui:Label tabindex="-1" text="ZeroLight OmniStream" display-tooltip-when-elided="true" name="zl-header" style="font-size: 20px; -unity-font-style: bold; padding-left: 4px; padding-right: 4px; padding-top: 0; padding-bottom: 4px; opacity: 1; align-self: center;" />
                 <ui:VisualElement name="gameviewsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); align-items: flex-start; flex-direction: row; justify-content: space-around; align-self: stretch; flex-shrink: 0;">
                     <ui:Button text="Load" display-tooltip-when-elided="true" name="gameviewload-button" style="align-items: stretch; width: 50%; padding-bottom: 8px; padding-top: 8px;" />
                     <ui:Button text="Save" display-tooltip-when-elided="true" name="gameviewsave-button" style="align-self: auto; width: 50%; align-items: stretch; padding-bottom: 8px; padding-top: 8px;" />
                 </ui:VisualElement>
+                <ui:VisualElement name="newerplugin-element" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; height: 36px; -unity-text-align: middle-left;">
+                    <ui:Label tabindex="-1" text="Warning: Newer OmniStream version available" display-tooltip-when-elided="true" name="newerplugin-label" style="width: auto; color: rgb(231, 98, 34); -unity-text-align: upper-left; font-size: 15px;" />
+                    <ui:Button text="Open GitHub Page" display-tooltip-when-elided="true" name="newerplugin-button" style="width: auto; flex-direction: column; -unity-text-align: middle-center; white-space: nowrap; height: 20px;" />
+                </ui:VisualElement>
                 <ui:VisualElement name="globalsettings-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-direction: column; justify-content: space-between; align-self: auto; flex-shrink: 0;">
                     <ui:Foldout text="General" name="general-foldout" value="true" style="-unity-font-style: bold; flex-direction: column; justify-content: space-around; align-items: stretch; flex-shrink: 0; flex-basis: auto;">
+                        <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="thumbnailpreview-label" style="-unity-font-style: normal; margin-left: 4px; margin-right: 4px; margin-top: 2px; margin-bottom: 2px; visibility: visible; display: flex;">
+                            <ui:VisualElement name="thumbnailpreview-image" tooltip="Thumbnail Image Preview" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); flex-shrink: 0; background-image: none; height: 32px; width: 32px; flex-direction: column; flex-wrap: nowrap; margin-left: 0; -unity-text-align: upper-left; max-width: 512px; max-height: 512px; display: flex;" />
+                        </ui:Label>
+                        <ui:TextField picking-mode="Ignore" label="Thumbnail File Path" name="thumbnail-text" style="-unity-font-style: normal; flex-direction: row; height: auto; min-height: initial;">
+                            <ui:Button text="Select" display-tooltip-when-elided="true" name="thumbnailselect-button" />
+                        </ui:TextField>
                         <ui:TextField label="Allowed Keys" name="filteredkeys-text" tooltip="Only the keys in this list will be passed by OmniStream to Unity. To add kays, press the rcord button and hit the key on the keyboard." style="position: relative; flex-basis: auto; align-items: stretch; width: auto; overflow: visible; padding-left: 0; -unity-font-style: normal; height: auto; min-height: initial;">
                             <ui:Button text="Record" display-tooltip-when-elided="true" name="recordkeys-button" />
                         </ui:TextField>
@@ -63,16 +73,20 @@
                             <ui:Button text="Log In" display-tooltip-when-elided="true" name="portallogout-button" style="padding-left: 0; margin-left: -12px; padding-top: 1px; padding-bottom: 1px; -unity-font-style: normal;" />
                         </ui:Foldout>
                     </ui:Foldout>
+                    <ui:Foldout text="Advanced Deploy Settings" name="advanceddeploy-foldout" value="false" style="flex-shrink: 0; -unity-font-style: bold;">
+                        <ui:TextField picking-mode="Ignore" label="HTTP Proxy Override" name="httpproxy-text" />
+                    </ui:Foldout>
                 </ui:VisualElement>
                 <ui:VisualElement name="devfeatures-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; flex-direction: column; visibility: visible; overflow: visible; flex-wrap: nowrap; align-items: stretch; justify-content: flex-start; display: flex; padding-top: 0; margin-top: 0; flex-shrink: 0;">
                     <ui:Foldout text="Dev Features" name="devfeatures-foldout" value="true" style="-unity-font-style: bold; flex-shrink: 0;">
                         <ui:DropdownField label="Storage Provider" index="0" choices="bard-zip,bard,blackhole" name="storageprovider-dropdown" />
                     </ui:Foldout>
                 </ui:VisualElement>
-                <ui:VisualElement name="footer-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; justify-content: flex-end; margin-top: 5px; padding-top: 10px; flex-shrink: 0;">
+                <ui:VisualElement name="footer-element" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; justify-content: flex-end; margin-top: 5px; padding-top: 10px; flex-shrink: 0; display: flex;">
                     <ui:Label tabindex="-1" text="BARD Auth" display-tooltip-when-elided="true" name="authstate-label" enable-rich-text="true" style="padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px; align-self: auto; justify-content: flex-start; -unity-text-align: upper-left; white-space: nowrap; text-overflow: clip;" />
                     <ui:TextField picking-mode="Ignore" label="Deploy ref" readonly="true" name="deployref-field" tooltip="The OmniStream build ID for your completed build. Provide this to ZeroLight to have your build deployed." />
                     <ui:Button text="Build And Deploy" display-tooltip-when-elided="true" name="build-button" />
+                    <ui:Button text="Pause Upload" display-tooltip-when-elided="true" name="pause-button" style="display: flex;" />
                     <ui:Button text="Authenticate" display-tooltip-when-elided="true" name="authenticate-button" style="display: flex;" />
                 </ui:VisualElement>
             </ui:VisualElement>
@@ -80,16 +94,17 @@
     </ui:VisualElement>
     <ui:VisualElement name="about-root" style="flex-grow: 0; background-color: rgba(13, 21, 44, 0); height: auto; flex-shrink: 0;">
         <ui:ScrollView name="scroll-about" horizontal-scroller-visibility="Hidden">
-            <ui:VisualElement name="about-element" style="flex-grow: 0; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: auto; font-size: 40%; flex-shrink: 0;">
+            <ui:VisualElement name="about-element" style="flex-grow: 0; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: auto; font-size: 40%; flex-shrink: 0; display: flex;">
                 <ui:VisualElement name="top-about" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-and-crop; height: 152px; display: flex; opacity: 1; align-items: auto; flex-direction: column; justify-content: center; align-self: stretch; margin-top: 0; margin-bottom: 0; flex-shrink: 0; min-height: auto;">
-                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="background-image: url(&quot;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&quot;); width: 488px; align-self: center; height: 293px; transform-origin: top; translate: 0 78px;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="background-image: url(&apos;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&apos;); width: 488px; align-self: center; height: 293px; transform-origin: top; translate: 0 78px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="middle-about" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; height: auto; font-size: 17.5%; scale: 1 1; flex-shrink: 0;">
                     <ui:Label tabindex="-1" text="OmniStream is provided by ZeroLight Ltd&#10;ZLCloudStream Plugin Version: 1.0.3&#10;CloudStream2.dll: 2.0.0.113&#10;Build Date: Sep 14 2023" display-tooltip-when-elided="true" name="about-text" style="height: 80%; justify-content: flex-end; color: rgb(255, 255, 255); -unity-text-align: middle-left; margin-left: 20px; font-size: 14%; flex-grow: 0; flex-basis: auto; scale: 1 1;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="bot-about" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: auto; flex-shrink: 0;">
-                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: flex-end; align-self: center; height: 80%; width: 60%;">
+                    <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0); flex-direction: row; flex-wrap: nowrap; justify-content: center; align-items: flex-end; align-self: center; height: 80%; width: 34%; flex-shrink: 1;">
                         <ui:Button text="Copy to Clipboard" display-tooltip-when-elided="true" name="copyabout-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
+                        <ui:Button text="Get Logs" display-tooltip-when-elided="true" name="getlogs-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
                         <ui:Button text="Support" display-tooltip-when-elided="true" name="support-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
                         <ui:Button text="License" display-tooltip-when-elided="true" name="license-button" style="width: 100%; flex-direction: row; -unity-text-align: middle-center;" />
                     </ui:VisualElement>
