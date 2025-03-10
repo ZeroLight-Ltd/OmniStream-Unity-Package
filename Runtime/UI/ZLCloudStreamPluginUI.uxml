@@ -56,6 +56,7 @@
                         <ui:TextField picking-mode="Ignore" label="Project Binary" name="assetexe-text" style="-unity-font-style: normal; height: auto; min-height: initial;">
                             <ui:Button text="Select" display-tooltip-when-elided="true" name="assetexeselect-button" />
                         </ui:TextField>
+                        <ui:TextField picking-mode="Ignore" label="Command line" name="assetcmdline-text" style="-unity-font-style: normal; height: auto; min-height: initial;" />
                     </ui:Foldout>
                     <ui:Foldout text="Licensing" name="licensing-foldout" value="false" style="-unity-font-style: bold;">
                         <ui:TextField picking-mode="Ignore" label="License" name="licensing-text" style="-unity-font-style: normal;" />
@@ -96,7 +97,7 @@
         <ui:ScrollView name="scroll-about" horizontal-scroller-visibility="Hidden">
             <ui:VisualElement name="about-element" style="flex-grow: 0; background-color: rgb(13, 21, 44); flex-direction: column; align-items: center; justify-content: flex-end; height: auto; font-size: 40%; flex-shrink: 0; display: flex;">
                 <ui:VisualElement name="top-about" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); background-image: none; -unity-background-scale-mode: scale-and-crop; height: 152px; display: flex; opacity: 1; align-items: auto; flex-direction: column; justify-content: center; align-self: stretch; margin-top: 0; margin-bottom: 0; flex-shrink: 0; min-height: auto;">
-                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="background-image: url(&apos;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&apos;); width: 488px; align-self: center; height: 293px; transform-origin: top; translate: 0 78px;" />
+                    <ui:Label tabindex="-1" display-tooltip-when-elided="true" name="about-block" style="background-image: url(&quot;project://database/Packages/com.zerolight.cloudstreamplugin/Runtime/UI/ZeroLightAboutBackground.png?fileID=2800000&amp;guid=087a444d2571da641a4dfdad9d66502f&amp;type=3#ZeroLightAboutBackground&quot;); width: 488px; align-self: center; height: 293px; transform-origin: top; translate: 0 78px;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="middle-about" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); min-width: auto; min-height: auto; height: auto; font-size: 17.5%; scale: 1 1; flex-shrink: 0;">
                     <ui:Label tabindex="-1" text="OmniStream is provided by ZeroLight Ltd&#10;ZLCloudStream Plugin Version: 1.0.3&#10;CloudStream2.dll: 2.0.0.113&#10;Build Date: Sep 14 2023" display-tooltip-when-elided="true" name="about-text" style="height: 80%; justify-content: flex-end; color: rgb(255, 255, 255); -unity-text-align: middle-left; margin-left: 20px; font-size: 14%; flex-grow: 0; flex-basis: auto; scale: 1 1;" />

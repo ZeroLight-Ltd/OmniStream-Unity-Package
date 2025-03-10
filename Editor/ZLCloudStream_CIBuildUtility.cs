@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZeroLight;
 
-public class ZLCloudStream_CIBuildUtility
+namespace ZeroLight
 {
-    public static void CI_TriggerBuild()
+
+    public class ZLCloudStream_CIBuildUtility
     {
-		Debug.Log("OmniStream CI Build & Deploy - Starting build");
-		ZLCloudStreamPluginWindow.CI_TriggerBuildAndDeploy();
+        public static void CI_TriggerBuild()
+        {
+            Debug.Log("OmniStream CI Build & Deploy - Starting build");
+            ZLCloudStreamPluginWindow.CI_TriggerBuildAndDeploy();
+        }
     }
+
 }
