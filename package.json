@@ -1,7 +1,7 @@
 {
     "name": "com.zerolight.cloudstreamplugin",
     "description": "ZeroLight OmniStream Plugin",
-    "version": "1.0.130",
+    "version": "1.0.132",
     "unity": "2021.3",
     "displayName": "ZeroLight OmniStream",
     "author": {
@@ -9,7 +9,7 @@
         "url": "https://zerolight.com/"
     },
     "dependencies": {
-        "com.unity.inputsystem": "1.5.1",
+        "com.unity.inputsystem": "1.4.1",
         "com.unity.modules.jsonserialize": "1.0.0",
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.uielements": "1.0.0",
