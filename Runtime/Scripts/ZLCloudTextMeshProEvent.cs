@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextMeshProEvent
+namespace ZeroLight
 {
-	[RuntimeInitializeOnLoadMethod]
-	static void LoadTextMeshProEvent()
+	public class TextMeshProEvent
 	{
-		ZeroLight.ZLCloudTextEvent.onTextEvent += OnTextEvent;
-	}
-
-	static void OnTextEvent(GameObject selectedObject, Event textEvent)
-	{
-		if (selectedObject.TryGetComponent(out TMPro.TMP_InputField tmpInputField))
+		[RuntimeInitializeOnLoadMethod]
+		static void LoadTextMeshProEvent()
 		{
-			tmpInputField.ProcessEvent(textEvent);
-			tmpInputField.ForceLabelUpdate();
+			ZeroLight.ZLCloudTextEvent.onTextEvent += OnTextEvent;
+		}
+
+		static void OnTextEvent(GameObject selectedObject, Event textEvent)
+		{
+			if (selectedObject.TryGetComponent(out TMPro.TMP_InputField tmpInputField))
+			{
+				tmpInputField.ProcessEvent(textEvent);
+				tmpInputField.ForceLabelUpdate();
+			}
 		}
 	}
 }
